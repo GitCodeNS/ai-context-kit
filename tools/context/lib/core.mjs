@@ -192,19 +192,20 @@ export function parseFrontmatter(text) {
 }
 
 export function collectMarkdown(repoRoot) {
-  const markdownFiles = walkFiles(repoRoot).filter((filePath) => filePath.toLowerCase().endsWith(".md"));
+  const realRoot = resolveProjectRoot(repoRoot);
+  const markdownFiles = walkFiles(realRoot).filter((filePath) => filePath.toLowerCase().endsWith(".md"));
   if (markdownFiles.length > DISCOVERY_LIMITS.maxMarkdownFiles) {
     throw new Error(`Markdown file count exceeds limit (${DISCOVERY_LIMITS.maxMarkdownFiles})`);
   }
   let totalBytes = 0;
   return markdownFiles.map((filePath) => {
-      const text = readRegularFileBounded(repoRoot, filePath, DISCOVERY_LIMITS.maxFileBytes);
+      const text = readRegularFileBounded(realRoot, filePath, DISCOVERY_LIMITS.maxFileBytes);
       const bytes = Buffer.byteLength(text, "utf8");
       totalBytes += bytes;
       if (totalBytes > DISCOVERY_LIMITS.maxTotalMarkdownBytes) throw new Error(`Markdown input exceeds aggregate limit (${DISCOVERY_LIMITS.maxTotalMarkdownBytes} bytes)`);
       return {
         filePath,
-        relativePath: slash(path.relative(repoRoot, filePath)),
+        relativePath: slash(path.relative(realRoot, filePath)),
         text,
         bytes,
         ...parseFrontmatter(text),

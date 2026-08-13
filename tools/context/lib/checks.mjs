@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {
   AUTHORITIES, STATUSES, TYPES, VISIBILITIES, collectMarkdown,
-  extractContextReferences, extractMarkdownLinks, isManagedDocument, isSafeRelativePath, parseFrontmatter, safePath, slash,
+  extractContextReferences, extractMarkdownLinks, isManagedDocument, isSafeRelativePath, parseFrontmatter, resolveProjectRoot, safePath, slash,
 } from "./core.mjs";
 
 const REQUIRED_PATHS = [
@@ -81,7 +81,8 @@ function checkExampleContracts(repoRoot, issues) {
   }
 }
 
-export function runChecks(repoRoot) {
+export function runChecks(inputRoot) {
+  const repoRoot = resolveProjectRoot(inputRoot);
   const issues = [];
   for (const requiredPath of REQUIRED_PATHS) {
     if (!exists(repoRoot, requiredPath)) issues.push(issue("error", "required-path", `Missing required path: ${requiredPath}`, requiredPath));
