@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/GitCodeNS/ai-context-kit/blob/main/spec/context.schema.json",
+  "title": "AIContextKit Context Document Metadata",
+  "type": "object",
+  "required": [
+    "context_version",
+    "id",
+    "type",
+    "status",
+    "authority",
+    "visibility",
+    "updated"
+  ],
+  "properties": {
+    "context_version": { "const": 2 },
+    "id": { "type": "string", "pattern": "^[A-Z0-9][A-Z0-9._-]{2,127}$" },
+    "type": {
+      "enum": [
+        "profile", "policy", "plan", "decision", "map", "report",
+        "handoff", "domain", "template", "example", "specification",
+        "repair_plan", "archive", "index"
+      ]
+    },
+    "status": {
+      "enum": [
+        "active", "proposed", "accepted", "blocked", "completed",
+        "rejected", "superseded", "archived"
+      ]
+    },
+    "authority": { "enum": ["canonical", "derived", "reference"] },
+    "visibility": { "enum": ["public", "internal", "sensitive"] },
+    "updated": { "type": "string", "format": "date" },
+    "related": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "source": { "type": "string" },
+    "replaces": { "type": "string" },
+    "expires": { "type": "string", "format": "date" },
+    "review_after": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": true
+}

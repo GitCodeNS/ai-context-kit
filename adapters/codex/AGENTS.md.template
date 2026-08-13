@@ -1,0 +1,11 @@
+# Project AI Context
+
+At the start of a task, read in order:
+
+1. `ai-context/AI_CONTEXT.md`
+2. `ai-context/CONTEXT_BUDGET.md`
+3. `ai-context/maps/RETRIEVAL_INDEX.md`
+4. `ai-context/plans/active/current-plan.md` if present
+5. Only files selected by the active task route
+
+Do not scan the entire repository at startup. Treat generated indexes, examples, templates, and archives as non-canonical. Follow the project's validation commands before declaring work complete.

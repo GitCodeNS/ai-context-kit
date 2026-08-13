@@ -1,0 +1,6 @@
+---
+description: Route project work through the AIContextKit startup packet
+alwaysApply: true
+---
+
+Start from `ai-context/AI_CONTEXT.md`. Follow its context budget, retrieval index, current plan, and validation route. Do not preload archives, examples, generated outputs, or unrelated source areas. Keep mutable facts in their canonical AIContextKit owners, not in this rule.

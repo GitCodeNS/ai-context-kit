@@ -1,0 +1,5 @@
+# Project AI Context
+
+Use `ai-context/AI_CONTEXT.md` as the canonical project bootstrap. Then read `ai-context/CONTEXT_BUDGET.md`, `ai-context/maps/RETRIEVAL_INDEX.md`, and the current plan when present. Retrieve only files needed by the active task.
+
+Do not copy mutable project facts into this adapter. Update the canonical owners under `ai-context/` instead.

@@ -1,0 +1,17 @@
+{
+  "name": "ai-context-kit",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Markdown-first context management protocol kit for long-running AI collaboration.",
+  "type": "module",
+  "scripts": {
+    "context:check": "node tools/context/check.mjs --strict",
+    "context:sync": "node tools/context/sync.mjs",
+    "context:index:check": "node tools/context/index.mjs --check",
+    "test": "node --test tools/context/tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
