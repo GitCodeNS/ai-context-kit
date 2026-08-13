@@ -8,7 +8,7 @@
     "context:check": "node tools/context/check.mjs --strict",
     "context:sync": "node tools/context/sync.mjs",
     "context:index:check": "node tools/context/index.mjs --check",
-    "test": "node --test tools/context/tests/*.test.mjs"
+    "test": "node --test tools/context/tests/context-tools.test.mjs tools/context/tests/fixture-contracts.test.mjs"
   },
   "engines": {
     "node": ">=20"
